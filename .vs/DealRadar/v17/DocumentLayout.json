@@ -1,0 +1,248 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\controllers\\authcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\controllers\\authcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\models\\entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\models\\entities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\services\\smartpricescraperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\services\\smartpricescraperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\services\\bankofferparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\services\\bankofferparser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\dealradar.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\dealradar.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\workers\\pricemonitorworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\workers\\pricemonitorworker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\controllers\\masterproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\controllers\\masterproductscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\services\\telegramnotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\services\\telegramnotificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|e:\\.net interview\\project\\practice\\deal\\dealradarapi\\dealradar\\services\\dealmargincalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E8AA2D1-BB0B-4DEC-B0DF-3623F976649D}|DealRadar\\DealRadar.csproj|solutionrelative:dealradar\\services\\dealmargincalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 274,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthContoller.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Controllers\\AuthContoller.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Controllers\\AuthContoller.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Controllers\\AuthContoller.cs",
+              "RelativeToolTip": "DealRadar\\Controllers\\AuthContoller.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAowHgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-04T05:58:25.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\appsettings.json",
+              "RelativeDocumentMoniker": "DealRadar\\appsettings.json",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\appsettings.json",
+              "RelativeToolTip": "DealRadar\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-01T18:02:12.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "BankOfferParser.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\BankOfferParser.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Services\\BankOfferParser.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\BankOfferParser.cs",
+              "RelativeToolTip": "DealRadar\\Services\\BankOfferParser.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAQwHYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-02T17:37:51.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SmartPriceScraperService.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\SmartPriceScraperService.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Services\\SmartPriceScraperService.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\SmartPriceScraperService.cs",
+              "RelativeToolTip": "DealRadar\\Services\\SmartPriceScraperService.cs",
+              "ViewState": "AgIAAIcCAAAAAAAAAAAAAIACAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T17:56:14.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Entities.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Models\\Entities.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Models\\Entities.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Models\\Entities.cs",
+              "RelativeToolTip": "DealRadar\\Models\\Entities.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T17:52:09.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Program.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Program.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Program.cs",
+              "RelativeToolTip": "DealRadar\\Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABQAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T18:03:03.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DealRadar.http",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\DealRadar.http",
+              "RelativeDocumentMoniker": "DealRadar\\DealRadar.http",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\DealRadar.http",
+              "RelativeToolTip": "DealRadar\\DealRadar.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-10-01T18:03:02.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Data\\AppDbContext.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "DealRadar\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAwwB8AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T17:54:48.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "DealRadar\\appsettings.Development.json",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\appsettings.Development.json",
+              "RelativeToolTip": "DealRadar\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-10-04T05:35:04.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PriceMonitorWorker.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Workers\\PriceMonitorWorker.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Workers\\PriceMonitorWorker.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Workers\\PriceMonitorWorker.cs",
+              "RelativeToolTip": "DealRadar\\Workers\\PriceMonitorWorker.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwGAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T18:01:36.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TelegramNotificationService.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\TelegramNotificationService.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Services\\TelegramNotificationService.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\TelegramNotificationService.cs",
+              "RelativeToolTip": "DealRadar\\Services\\TelegramNotificationService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T17:55:28.589Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MasterProductsController.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Controllers\\MasterProductsController.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Controllers\\MasterProductsController.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Controllers\\MasterProductsController.cs",
+              "RelativeToolTip": "DealRadar\\Controllers\\MasterProductsController.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwHIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-01T18:00:55.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DealMarginCalculator.cs",
+              "DocumentMoniker": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\DealMarginCalculator.cs",
+              "RelativeDocumentMoniker": "DealRadar\\Services\\DealMarginCalculator.cs",
+              "ToolTip": "E:\\.Net Interview\\Project\\Practice\\Deal\\DealRadarApi\\DealRadar\\Services\\DealMarginCalculator.cs",
+              "RelativeToolTip": "DealRadar\\Services\\DealMarginCalculator.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAgwC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-02T18:19:13.81Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 147,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
