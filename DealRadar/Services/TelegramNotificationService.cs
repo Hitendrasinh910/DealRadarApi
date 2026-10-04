@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using System.Text.Json;
 using DealRadar.Api.Models;
 
@@ -9,7 +9,7 @@ public class TelegramNotificationService
     private readonly HttpClient _httpClient;
     private readonly ILogger<TelegramNotificationService> _logger;
     private readonly string _botToken;
-    private readonly string _chatId;
+    private readonly List<string> _chatIds;
 
     public TelegramNotificationService(
         HttpClient httpClient,
@@ -27,17 +27,24 @@ public class TelegramNotificationService
         }
 
         _botToken = rawToken;
-        _chatId = (config["Telegram:ChatId"] ?? "").Trim();
+
+        // Parse any comma-separated ChatIds from config + ALWAYS include 8874381531
+        var rawChatIdConfig = (config["Telegram:ChatId"] ?? "").Trim();
+        _chatIds = rawChatIdConfig
+            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Append("8874381531") // Always sends to 8874381531 as well
+            .Distinct()
+            .ToList();
     }
 
     public async Task<bool> SendDealAlertAsync(
-    MasterProduct product,
-    ProductLink link,
-    ScrapeResult result,
-    MarginEvaluation margin)
+        MasterProduct product,
+        ProductLink link,
+        ScrapeResult result,
+        MarginEvaluation margin)
     {
         if (string.IsNullOrWhiteSpace(_botToken) ||
-            string.IsNullOrWhiteSpace(_chatId) ||
+            !_chatIds.Any() ||
             _botToken.Contains("PASTE_YOUR", StringComparison.OrdinalIgnoreCase))
         {
             _logger.LogWarning("Telegram credentials not configured.");
@@ -74,36 +81,50 @@ public class TelegramNotificationService
         🎯 <b>Target Price:</b> ₹{product.TargetPrice:N0}
         📈 <b>Margin:</b> ₹{margin.MarginAmount:N0} ({margin.MarginPercentage:0.##}%)
 
-        ⏰ <b>Checked At:</b> {DateTime.Now:dd MMM hh:mm tt}
+        ⏰ <b>Checked At:</b> {DateTime.UtcNow.AddHours(5.5):dd MMM hh:mm tt}
 
         🛒 <a href="{link.ProductUrl}"><b>Click Here to Buy Now</b></a>
         """;
 
-        var url = $"https://api.telegram.org/bot{_botToken}/sendMessage";
-        var payload = new
-        {
-            chat_id = _chatId,
-            text = message,
-            parse_mode = "HTML",
-            disable_web_page_preview = false
-        };
+        return await SendMessageToAllAsync(message);
+    }
 
-        try
+    public async Task<bool> SendMessageToAllAsync(string htmlMessage)
+    {
+        var url = $"https://api.telegram.org/bot{_botToken}/sendMessage";
+        bool anySuccess = false;
+
+        foreach (var chatId in _chatIds)
         {
-            var content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync(url, content);
-            if (!response.IsSuccessStatusCode)
+            var payload = new
             {
-                var err = await response.Content.ReadAsStringAsync();
-                _logger.LogError("Telegram API Error: {Err}", err);
-                return false;
+                chat_id = chatId,
+                text = htmlMessage,
+                parse_mode = "HTML",
+                disable_web_page_preview = false
+            };
+
+            try
+            {
+                var content = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(url, content);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var err = await response.Content.ReadAsStringAsync();
+                    _logger.LogError("Telegram API Error for ChatId {ChatId}: {Err}", chatId, err);
+                }
+                else
+                {
+                    anySuccess = true;
+                }
             }
-            return true;
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to send Telegram message to ChatId {ChatId}.", chatId);
+            }
         }
-        catch (Exception ex)
-        {
-            _logger.LogError(ex, "Failed to send Telegram message.");
-            return false;
-        }
+
+        return anySuccess;
     }
 }
