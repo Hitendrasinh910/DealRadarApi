@@ -1,0 +1,33 @@
+name: 10-Minute Price Monitor
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build API Project
+        run: dotnet build ./DealRadarApi/DealRadar/DealRadar.csproj -c Release
+
+      - name: Install Playwright & Chromium
+        run: pwsh ./DealRadarApi/DealRadar/bin/Release/net8.0/playwright.ps1 install --with-deps chromium
+
+      - name: Execute Scraper Routine
+        env:
+          ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}
+          Telegram__BotToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          Telegram__ChatId: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: dotnet run --project ./DealRadarApi/DealRadar/DealRadar.csproj -c Release --no-build -- --cron-scan
