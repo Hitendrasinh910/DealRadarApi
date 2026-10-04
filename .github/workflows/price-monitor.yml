@@ -19,22 +19,22 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Find and Build API Project
+      - name: Clean Windows bin/obj & Build for Linux
         run: |
+          # 1. Delete any Windows bin/obj folders that were committed to Git
+          find . -type d \( -name "bin" -o -name "obj" \) -exec rm -rf {} +
+          
+          # 2. Find .csproj and build fresh for Linux Release
           CSPROJ_PATH=$(find . -name "*.csproj" | head -n 1)
-          echo "Found project at: $CSPROJ_PATH"
-          if [ -z "$CSPROJ_PATH" ]; then
-            echo "ERROR: No .csproj file was uploaded to this GitHub repository!"
-            ls -la
-            exit 1
-          fi
+          echo "Building project: $CSPROJ_PATH"
           echo "CSPROJ_PATH=$CSPROJ_PATH" >> $GITHUB_ENV
           dotnet build "$CSPROJ_PATH" -c Release
 
       - name: Install Playwright & Chromium
         run: |
-          PLAYWRIGHT_SCRIPT=$(find . -name "playwright.ps1" | head -n 1)
-          echo "Found playwright script at: $PLAYWRIGHT_SCRIPT"
+          # Now only the fresh Linux bin/Release/net8.0/playwright.ps1 exists!
+          PLAYWRIGHT_SCRIPT=$(find . -path "*/bin/Release/*" -name "playwright.ps1" | head -n 1)
+          echo "Running Playwright installer from: $PLAYWRIGHT_SCRIPT"
           pwsh "$PLAYWRIGHT_SCRIPT" install --with-deps chromium
 
       - name: Execute Scraper Routine
