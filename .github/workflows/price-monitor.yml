@@ -19,15 +19,28 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Build API Project
-        run: dotnet build ./DealRadarApi/DealRadar/DealRadar.csproj -c Release
+      - name: Find and Build API Project
+        run: |
+          CSPROJ_PATH=$(find . -name "*.csproj" | head -n 1)
+          echo "Found project at: $CSPROJ_PATH"
+          if [ -z "$CSPROJ_PATH" ]; then
+            echo "ERROR: No .csproj file was uploaded to this GitHub repository!"
+            ls -la
+            exit 1
+          fi
+          echo "CSPROJ_PATH=$CSPROJ_PATH" >> $GITHUB_ENV
+          dotnet build "$CSPROJ_PATH" -c Release
 
       - name: Install Playwright & Chromium
-        run: pwsh ./DealRadarApi/DealRadar/bin/Release/net8.0/playwright.ps1 install --with-deps chromium
+        run: |
+          PLAYWRIGHT_SCRIPT=$(find . -name "playwright.ps1" | head -n 1)
+          echo "Found playwright script at: $PLAYWRIGHT_SCRIPT"
+          pwsh "$PLAYWRIGHT_SCRIPT" install --with-deps chromium
 
       - name: Execute Scraper Routine
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}
           Telegram__BotToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           Telegram__ChatId: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: dotnet run --project ./DealRadarApi/DealRadar/DealRadar.csproj -c Release --no-build -- --cron-scan
+        run: |
+          dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
