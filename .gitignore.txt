@@ -1,0 +1,10 @@
+.vs/
+bin/
+obj/
+node_modules/
+dist/
+.angular/
+*.user
+*.suo
+*.PublishSettings
+appsettings.Development.json
