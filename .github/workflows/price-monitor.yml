@@ -2,13 +2,24 @@ name: 10-Minute Price Monitor
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    # Runs once every hour (GitHub does NOT throttle hourly schedules!)
+    - cron: '0 * * * *'
   workflow_dispatch:
+    inputs:
+      productId:
+        description: 'Optional MasterProduct ID to check'
+        required: false
+        default: '0'
+
+# Prevents two hourly runs from overlapping
+concurrency:
+  group: price-scraper-group
+  cancel-in-progress: false
 
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 65
 
     steps:
       - name: Checkout Code
@@ -21,26 +32,39 @@ jobs:
 
       - name: Clean Windows bin/obj & Build for Linux
         run: |
-          # 1. Delete any Windows bin/obj folders that were committed to Git
           find . -type d \( -name "bin" -o -name "obj" \) -exec rm -rf {} +
-          
-          # 2. Find .csproj and build fresh for Linux Release
           CSPROJ_PATH=$(find . -name "*.csproj" | head -n 1)
-          echo "Building project: $CSPROJ_PATH"
           echo "CSPROJ_PATH=$CSPROJ_PATH" >> $GITHUB_ENV
           dotnet build "$CSPROJ_PATH" -c Release
 
-      - name: Install Playwright & Chromium
+      - name: Install Playwright & Chromium (Once per Hour!)
         run: |
-          # Now only the fresh Linux bin/Release/net8.0/playwright.ps1 exists!
           PLAYWRIGHT_SCRIPT=$(find . -path "*/bin/Release/*" -name "playwright.ps1" | head -n 1)
-          echo "Running Playwright installer from: $PLAYWRIGHT_SCRIPT"
           pwsh "$PLAYWRIGHT_SCRIPT" install --with-deps chromium
 
-      - name: Execute Scraper Routine
+      - name: Execute Scraper (Every 10 Mins for 1 Hour)
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}
           Telegram__BotToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           Telegram__ChatId: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TARGET_PRODUCT_ID: ${{ github.event.inputs.productId }}
         run: |
-          dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
+          # If triggered manually via "Check Price" button, run ONCE immediately and exit!
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual trigger detected! Running single fast scan..."
+            dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
+            exit 0
+          fi
+
+          # If triggered by schedule, run 6 times (every 10 minutes) inside this 1-hour session!
+          for i in 1 2 3 4 5 6; do
+            echo "===================================================="
+            echo "   Starting Scan Cycle $i of 6 at $(date)"
+            echo "===================================================="
+            dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
+            
+            if [ $i -lt 6 ]; then
+              echo "Cycle $i complete! Sleeping 10 minutes until next scan..."
+              sleep 600
+            fi
+          done
