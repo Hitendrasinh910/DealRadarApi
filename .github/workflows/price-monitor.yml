@@ -2,8 +2,8 @@ name: 10-Minute Price Monitor
 
 on:
   schedule:
-    # Runs once every hour (GitHub does NOT throttle hourly schedules!)
-    - cron: '0 * * * *'
+    # Backup fallback only (in case chain is ever manually stopped)
+    - cron: '23 */2 * * *'
   workflow_dispatch:
     inputs:
       productId:
@@ -11,15 +11,19 @@ on:
         required: false
         default: '0'
 
-# Prevents two hourly runs from overlapping
+# Required so GITHUB_TOKEN can trigger the next workflow run automatically!
+permissions:
+  actions: write
+  contents: read
+
 concurrency:
-  group: price-scraper-group
+  group: price-scraper-${{ github.event.inputs.productId || 'loop' }}
   cancel-in-progress: false
 
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
-    timeout-minutes: 65
+    timeout-minutes: 90
 
     steps:
       - name: Checkout Code
@@ -37,34 +41,41 @@ jobs:
           echo "CSPROJ_PATH=$CSPROJ_PATH" >> $GITHUB_ENV
           dotnet build "$CSPROJ_PATH" -c Release
 
-      - name: Install Playwright & Chromium (Once per Hour!)
+      - name: Install Playwright & Chromium
         run: |
           PLAYWRIGHT_SCRIPT=$(find . -path "*/bin/Release/*" -name "playwright.ps1" | head -n 1)
           pwsh "$PLAYWRIGHT_SCRIPT" install --with-deps chromium
 
-      - name: Execute Scraper (Every 10 Mins for 1 Hour)
+      - name: Execute Scraper Loop
         env:
           ConnectionStrings__DefaultConnection: ${{ secrets.CONNECTION_STRING }}
           Telegram__BotToken: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           Telegram__ChatId: ${{ secrets.TELEGRAM_CHAT_ID }}
           TARGET_PRODUCT_ID: ${{ github.event.inputs.productId }}
         run: |
-          # If triggered manually via "Check Price" button, run ONCE immediately and exit!
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "Manual trigger detected! Running single fast scan..."
+          # If a specific productId was clicked on the Angular Dashboard ("Check Price" button),
+          # scan ONLY that product once and exit immediately!
+          if [ -n "${{ github.event.inputs.productId }}" ] && [ "${{ github.event.inputs.productId }}" != "0" ]; then
+            echo "Single product scan requested for ID=${{ github.event.inputs.productId }}"
             dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
             exit 0
           fi
 
-          # If triggered by schedule, run 6 times (every 10 minutes) inside this 1-hour session!
-          for i in 1 2 3 4 5 6; do
+          # Otherwise, run 4 cycles (every 10 minutes) and then chain the next workflow run!
+          for i in 1 2 3 4; do
             echo "===================================================="
-            echo "   Starting Scan Cycle $i of 6 at $(date)"
+            echo "   Starting Scan Cycle $i of 4 at $(date)"
             echo "===================================================="
-            dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan
+            dotnet run --project "$CSPROJ_PATH" -c Release --no-build -- --cron-scan || true
             
-            if [ $i -lt 6 ]; then
-              echo "Cycle $i complete! Sleeping 10 minutes until next scan..."
-              sleep 600
-            fi
+            echo "Cycle $i complete! Sleeping 10 minutes..."
+            sleep 600
           done
+
+      - name: Chain Next Run Immediately (Never Stops!)
+        if: always() && (github.event.inputs.productId == '' || github.event.inputs.productId == '0')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Triggering the next continuous 10-Minute Price Monitor run on master..."
+          gh workflow run price-monitor.yml --ref master
